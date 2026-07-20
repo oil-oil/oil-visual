@@ -17,11 +17,6 @@
     <path d="M742 76C828 30 985 30 1138 72" fill="none" stroke="#151515" stroke-width="2" stroke-dasharray="3 10" opacity="0.28"/>
 
     <g transform="translate(58 42)" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC',sans-serif">
-      <g>
-        <rect width="258" height="30" rx="15" fill="#151515"/>
-        <text x="129" y="21" fill="#ffffff" font-size="13" font-weight="700" text-anchor="middle" letter-spacing="1.2">OIL VISUAL · ILLUSTRATION STYLE</text>
-      </g>
-
       <text x="0" y="108" fill="#151515" font-size="76" font-weight="760" letter-spacing="-3">oil-visual</text>
       <text x="2" y="151" fill="#514e48" font-size="27" font-weight="650">漫画墨线、半调网点、小人和黄色边牧。</text>
 

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Oil Visual"
+  short_description: "Create labeled explainers and transparent illustrations"
+  default_prompt: "Use $oil-visual to create either a finished explanatory image or a transparent character illustration in the oil manga-ink style."

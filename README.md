@@ -18,11 +18,17 @@
 ## 示例
 
 <p align="center">
-  <img src="./examples/explainer-agent-workflow.png" width="48%" alt="小人和黄色边牧风格的子 Agent 机制图">
-  <img src="./examples/explainer-cost-comparison.png" width="48%" alt="小人和黄色边牧风格的成本对照图">
+  <img src="./examples/agent-workflow-square.png" width="32%" alt="主 Agent 分配任务并统一验收">
+  <img src="./examples/explainer-cost-comparison.png" width="32%" alt="分工清楚与重复处理的成本对比">
+  <img src="./examples/feedback-loop.png" width="32%" alt="输入、处理、结果与反馈组成的循环">
 </p>
 
-左图用任务单、工作桌和结果文件夹说明任务怎样分配与汇总。右图用资料数量和消耗表对比分工与重复处理。两张图的文字都直接画在图片里。
+<p align="center">
+  <img src="./examples/pipeline-bottleneck.png" width="32%" alt="并行处理疏通任务瓶颈">
+  <img src="./examples/from-complex-to-clear.png" width="32%" alt="把复杂输入整理成清楚结果">
+</p>
+
+同一套小人、边牧、墨线、网点和语义色，可以表现机制、对比、循环、瓶颈和信息整理。
 
 ## 安装
 

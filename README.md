@@ -2,7 +2,7 @@
   <img src="./assets/readme/hero.svg" width="100%" alt="oil-visual：漫画墨线、半调网点、小人和黄色边牧组成的配图风格">
 </p>
 
-`oil-visual` 是一套给 Codex 使用的配图规范。它把角色、线条、网点、颜色、场景和图片文字统一在一套规则里，让不同主题的图保持同一种视觉语言。
+制作统一漫画墨线风格的解释图与透明角色插图，用于概念、流程、比较和文章配图。
 
 适合用来画概念解释、机制流程、对比关系和角色场景。
 
@@ -33,10 +33,10 @@
 ## 安装
 
 ```bash
-git clone https://github.com/oil-oil/oil-visual.git ~/.codex/skills/oil-visual
+npx skills add oil-oil/oil-visual
 ```
 
-重启 Codex，然后在对话里点名使用：
+让当前宿主重新加载 Skill，然后在对话里点名使用：
 
 ```text
 Use $oil-visual to explain how the main Agent assigns work to subagents.
@@ -53,3 +53,25 @@ with the warm-yellow Border Collie sitting beside the desk.
 ## License
 
 [MIT](./LICENSE)
+
+## 配置、依赖与使用边界
+
+需要宿主可用的生图与读图能力；透明插图另需 Python 和 Pillow 运行 cutout.py。无额外账号硬性要求，费用与凭据由所选生图供应商决定。
+
+提示词与参考图会交给已选生图工具；图片中的文字与透明边缘必须检查。密集正文、可编辑图表应使用确定性排版工具。
+
+使用示例：
+
+```text
+用 oil-visual 画一张解释反馈循环的图，中文短标签。
+```
+
+## GitHub 安装
+
+把 [仓库地址](https://github.com/oil-oil/oil-visual) 交给 Agent，要求按 README 安装；也可运行：
+
+```bash
+npx skills add oil-oil/oil-visual
+```
+
+安装后由宿主重新加载 Skill。

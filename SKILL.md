@@ -1,6 +1,6 @@
 ---
 name: oil-visual
-description: "Create a consistent oil-style visual system in two modes: finished explanatory images with short accurate labels generated directly inside the scene, and transparent character illustrations produced with a bundled background-removal script. Use for concepts, mechanisms, comparisons, workflows, tradeoffs, hero artwork, editorial character scenes, and reusable layout illustrations featuring the glasses stick figure and warm-yellow Border Collie."
+description: "制作统一漫画墨线风格的解释图与透明角色插图，用于概念、机制、流程、对比和文章配图，包含眼镜线条人物与暖黄色牧羊犬。用户需要完整解释画面或可复用排版插图时使用；不用于普通代码图表、照片处理或无关品牌视觉。"
 ---
 
 # Oil Visual

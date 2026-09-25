@@ -1,6 +1,6 @@
 ---
 name: oil-visual
-description: "制作统一漫画墨线风格的解释图与透明角色插图，用于概念、机制、流程、对比和文章配图，包含眼镜线条人物与暖黄色牧羊犬。用户需要完整解释画面或可复用排版插图时使用；不用于普通代码图表、照片处理或无关品牌视觉。"
+description: "制作统一漫画墨线风格的解释图与透明插画素材，可单独绘制眼镜线条人物、暖黄色牧羊犬、两者组合，或同风格的物件与装饰元素。当用户需要概念、机制、流程、对比的完整解释画面，或可复用的排版插图时使用；不用于普通代码图表、照片处理或无关品牌视觉。"
 ---
 
 # Oil Visual
@@ -20,11 +20,11 @@ Use when the image must explain a concept, mechanism, workflow, comparison, or t
 
 ### Mode B — transparent illustration
 
-Use when the character scene will be composed into a hero, document, card, slide, or other layout.
+Use when a character, object, or decorative illustration will be composed into a hero, document, card, slide, or other layout.
 
-- Generate the subject on a perfectly uniform chroma-key background that does not occur in the artwork. Default to `#00FF00`; use `#FF00FF` when the subject contains green.
+- Request a genuinely transparent PNG when the selected generator supports native alpha. Otherwise use a perfectly uniform chroma-key background that does not occur in the artwork. Default to `#00FF00`; use `#FF00FF` when the subject contains green.
 - Do not include explanatory labels unless the user explicitly requests text inside the illustration.
-- Remove the background with the bundled `scripts/cutout.py` and deliver a transparent PNG.
+- Preserve native alpha when it is clean. For a chroma-key source, remove the background with the bundled `scripts/cutout.py`. Deliver a transparent PNG in either case.
 - Keep the transparent artwork as a reusable visual asset; the surrounding layout supplies the title and explanatory copy.
 
 If the destination is unclear, choose Mode A when the image itself must communicate the idea and Mode B when another layout will carry the explanation.
@@ -32,11 +32,12 @@ If the destination is unclear, choose Mode A when the image itself must communic
 ## Shared visual language
 
 - Draw confident black manga/comic ink outlines with varied line weight and restrained circular halftone screentone.
-- Keep the recurring characters: a minimal stick-figure protagonist with a round head, thin round glasses, dot eyes, a simple smile, and thin line-drawn limbs; plus a chubby warm-yellow Border Collie companion.
-- Keep characters secondary to the subject's evidence or action.
-- Use black, white, and halftone gray as the base. Use warm yellow for the dog, small light patches, and sparse star accents.
+- Treat the recurring characters as optional subjects, not a required pair. When a person is selected, draw the minimal stick-figure protagonist with a round head, thin round glasses, dot eyes, a simple smile, and thin line-drawn limbs; when a dog is selected, draw the chubby warm-yellow Border Collie. Select characters only when requested or when they visibly help explain the claim; never add them merely to signal the style.
+- For object-only artwork, carry the same style through clear silhouettes, varied ink line weight, restrained circular halftone, and simple material details. Do not add a person, dog, or face to make an object feel on-brand.
+- When characters are present, keep them secondary to the subject's evidence or action unless the character itself is the requested subject.
+- Use black, white, and halftone gray as the base. Use warm yellow for the dog when present; without the dog, warm yellow may appear as a small light patch or sparse star accent, but is not required.
 - Add at most two muted semantic colors. Common mapping: blue = input/content, orange = action/warning/cost, purple = process, green = successful result.
-- Avoid 3D, glossy gradients, photorealism, wobbly sketch lines, generic card grids, dashboards, decorative clutter, and watermarks.
+- Avoid 3D, glossy gradients, photorealism, wobbly sketch lines, generic card grids, dashboards, unrelated clutter, and watermarks. Deliberately requested decorative elements are valid subjects.
 
 ## Mode A workflow — explanatory image
 
@@ -79,7 +80,7 @@ and readable. Place "<label 1>" on <evidence surface>; place "<label 2>" on
 Use this order:
 
 1. State the concrete claim and shared task.
-2. Describe the real setting and the protagonist/dog action.
+2. Describe the real setting, selected subjects, and any action. Include the protagonist or dog only when requested or when they visibly help explain the claim.
 3. Describe the evidence objects and their geometry: aligned, nested, connected, split, transformed, repeated, or converging.
 4. Assign semantic colors.
 5. Quote the exact labels and specify each placement.
@@ -89,7 +90,7 @@ Use this order:
 Mode A style anchor:
 
 ```text
-Professional editorial manga/comic ink illustration. Clean confident black ink outlines with varied line weights, expressive but controlled. Use classic circular halftone screentone for gray and shadow areas. Minimal cute stick-figure protagonist with round head, thin round glasses, dot eyes, simple smile, and thin line-drawn limbs. Include a chubby warm-yellow Border Collie companion. Use an off-white lightly textured real environment, not a blank white canvas. Typography is modern sans-serif, medium or bold, large and readable. Color is restrained: black, white, halftone gray, warm yellow for the dog, plus at most two muted semantic accent colors. No 3D, no glossy gradients, no photorealism, no generic card grid, no dashboard, no decorative clutter, no tiny text, no long paragraphs, no watermark.
+Professional editorial manga/comic ink illustration. Clean confident black ink outlines with varied line weights, expressive but controlled. Use classic circular halftone screentone for gray and shadow areas. Render only the selected characters and objects; do not add a protagonist or dog automatically. Use an off-white lightly textured real environment, not a blank white canvas. Typography is modern sans-serif, medium or bold, large and readable. Color is restrained: black, white, halftone gray, warm yellow when useful, plus at most two muted semantic accent colors. No 3D, no glossy gradients, no photorealism, no generic card grid, no dashboard, no unrelated clutter, no tiny text, no long paragraphs, no watermark.
 ```
 
 ### 4. Inspect and retry
@@ -107,43 +108,53 @@ Change only the incorrect text "<wrong>" to the exact text "<right>".
 Do not add, remove, translate, or repeat any other text.
 ```
 
-## Mode B workflow — transparent illustration
+## Mode B workflow — transparent illustration asset
 
-### 1. Describe one reusable scene
+### 1. Select the subject
 
-Use one character action and only the objects needed to establish it. Examples: drawing at a desk, inspecting a document, holding a blueprint, or presenting a finished result. Leave generous padding around the subject so the cutout can be composed safely.
+Identify exactly which subjects are requested: the person alone, the dog alone, both together, or an object or decorative element without characters. Describe one clear action when an action is needed, and include only the props needed to establish it. For a standalone object, describe its shape, material, and distinguishing details instead. Leave generous padding around the artwork so the cutout can be composed safely.
 
 ### 2. Build the prompt
 
-Describe the subject first, then append this fixed anchor:
-
-Replace `<KEY_COLOR>` with the selected hex color before sending the prompt.
+Describe the selected subjects first. State explicitly that no unrequested person, dog, face, or prop should appear. Then append the fixed style anchor and one background rule below.
 
 ```text
 Style: professional manga/comic ink illustration. Clean confident ink outlines
 with varying line weights, thick for contours and thin for details, not wobbly
-or sketchy. Heavy use of classic circular halftone screentone dot patterns for
-all gray and shadow areas. The main character is a cute minimal stick figure
-with a round head, thin round glasses, dot eyes, simple smile, and thin
-line-drawn limbs. Include a chubby warm-yellow Border Collie companion.
-Color usage is extremely restrained: 90% black, white, and gray halftone;
-warm yellow only on the dog, small light patches, and sparse star accents.
-The background must be a perfectly uniform flat <KEY_COLOR> rectangle with zero
-gradient, texture, noise, speckles, shadows, floor plane, or lighting variation.
+or sketchy. Use classic circular halftone screentone dot patterns for gray and
+shadow areas. Give characters and objects the same clear silhouette and ink
+language. Color usage is extremely restrained: mostly black, white, and gray
+halftone; warm yellow on the dog when present, or as an optional small light
+patch or sparse star accent when the dog is absent. Use no more than two muted
+semantic accent colors. Render only the requested subjects.
 Do not let halftone, ink, props, or the subject touch the image border. Keep
 generous padding. No text, no watermark. PNG format.
+```
+
+Use this background rule when the generator supports genuine transparency:
+
+```text
+Render on a genuinely transparent background with a clean alpha channel.
+No backdrop, floor plane, cast shadow, or opaque pixels outside the artwork.
+```
+
+Otherwise replace `<KEY_COLOR>` with the selected hex color and use this rule:
+
+```text
+The background must be a perfectly uniform flat <KEY_COLOR> rectangle with zero
+gradient, texture, noise, speckles, shadows, floor plane, or lighting variation.
 ```
 
 ### 3. Validate the source
 
 - Inspect the image before removal.
-- Confirm all four corners are uniform and visually match the chosen key color.
-- Reject backgrounds with gradients, texture, shadows, speckles, or artwork touching the border.
-- Preserve the source image alongside the transparent result until the output is approved.
+- For native alpha, confirm the image is RGBA, all four corners have alpha `0`, and no opaque background or edge residue remains. Keep the alpha intact; do not run the cutout script.
+- For a chroma-key source, confirm all four corners are uniform and visually match the chosen key color. Reject backgrounds with gradients, texture, shadows, speckles, or artwork touching the border.
+- Preserve a chroma-key source alongside the transparent result until the output is approved.
 
-### 4. Remove the background
+### 4. Remove a chroma-key background only
 
-Install Pillow if the active Python environment does not have it, then run:
+Skip this step for clean native-alpha output. For a uniform chroma-key source, install Pillow if the active Python environment does not have it, then run:
 
 ```bash
 python3 scripts/cutout.py source.png transparent.png
@@ -162,7 +173,7 @@ The script samples the image border, builds a soft alpha matte from color distan
 ### 5. Validate the transparent result
 
 - Confirm the output is RGBA and all four corners have alpha `0`.
-- Confirm the subject remains complete, including glasses, thin limbs, dog ears, tail, and small props.
+- Confirm every requested subject remains complete. Check glasses and thin limbs for a person, ears and tail for a dog, and narrow contours or small details for an object.
 - Check for a gray fringe at 100% zoom.
 - Confirm internal white and halftone areas were not erased.
 - Regenerate the source instead of forcing the algorithm when the background is visibly uneven.
@@ -172,16 +183,16 @@ The script samples the image border, builds a soft alpha matte from color distan
 - Save approved project assets inside the current project or output directory.
 - Do not leave project-referenced images only in the generator's default storage.
 - Use versioned filenames instead of overwriting an approved asset unless the user explicitly requests replacement.
-- Report the final prompt, output mode, source image path when Mode B is used, final image path, and any non-default cutout options.
+- Report the final prompt, output mode, final image path, and the transparency path used. Include the chroma-key source path and any non-default cutout options when cutout was needed.
 
 ## Quality gate
 
 For every output:
 
 - The subject is recognizable in about 3 seconds.
-- The main action or relation is clear in about 10 seconds.
-- Characters support the subject instead of becoming generic decoration.
-- Line work, halftone, warm yellow, and semantic accents remain consistent.
+- When the output explains something, the main action or relation is clear in about 10 seconds.
+- Only requested characters appear; when present, they serve the subject rather than becoming generic decoration.
+- Line work and halftone remain consistent; warm yellow and semantic accents follow the selected subjects and meaning.
 
 For Mode A:
 
@@ -192,6 +203,6 @@ For Mode A:
 
 For Mode B:
 
-- Background removal is clean and the output has real transparency.
+- The output has real transparency, whether supplied natively or produced by clean background removal.
 - Thin details and internal halftone regions remain intact.
 - No source background, fringe, shadow, or border artifact remains.
